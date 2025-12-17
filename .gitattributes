@@ -1,0 +1,9 @@
+# 强制使用 LF 换行符的脚本文件
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Markdown 文件使用 UTF-8
+*.md text eol=lf working-tree-encoding=UTF-8
+
+# 其他文件保持默认
+* text=auto
