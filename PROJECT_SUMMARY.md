@@ -1,64 +1,64 @@
 # 📦 项目总结
 
-## �?已完成的文件
+## ✅ 已完成的文件
 
 ### 📁 项目结构
 
 ```
-wexchatpush/
+wechat-push/
 ├── 📄 README.md              # 完整项目文档
-├── 📄 QUICKSTART.md          # 快速开始指�?
+├── 📄 QUICKSTART.md          # 快速开始指南
 ├── 📄 DEPLOYMENT.md          # 部署指南
-├── 📄 LICENSE                # MIT 开源协�?
+├── 📄 LICENSE                # MIT 开源协议
 ├── 📄 .gitignore             # Git 忽略文件
-├── 📄 install.sh             # 服务器一键安装脚�?
-�?
+├── 📄 install.sh             # 服务器一键安装脚本
+│
 ├── 📁 .github/workflows/
-�?  └── 📄 deploy-pages.yml   # GitHub Pages 自动部署
-�?
+│   └── 📄 deploy-pages.yml   # GitHub Pages 自动部署
+│
 ├── 📁 WeChatPush/            # 在线配置工具
-�?  ├── 📄 index.html         # 主页�?
-�?  ├── 📄 help.html          # 使用说明�?
-�?  ├── 📄 styles.css         # 样式文件
-�?  └── 📄 script.js          # 交互逻辑
-�?
-└── 📁 WeChatPush-Merged/     # Python 推送脚�?
-    ├── 📄 main.py            # 主程�?
+│   ├── 📄 index.html         # 主页面
+│   ├── 📄 help.html          # 使用说明页
+│   ├── 📄 styles.css         # 样式文件
+│   └── 📄 script.js          # 交互逻辑
+│
+└── 📁 WeChatPush-Merged/     # Python 推送脚本
+    ├── 📄 main.py            # 主程序
     ├── 📄 config.example.txt # 配置示例
     └── 📄 requirements.txt   # Python 依赖
 ```
 
 ---
 
-## 🎯 功能特�?
+## 🎯 功能特性
 
 ### 1️⃣ 在线配置工具
-- �?精美的渐变色界面设计
-- �?5步向导式配置流程
-- �?动态背景和微动画效�?
-- �?完全响应式设�?
-- �?一键生成和下载配置文件
-- �?详细的使用说明页�?
+- ✅ 精美的渐变色界面设计
+- ✅ 5步向导式配置流程
+- ✅ 动态背景和微动画效果
+- ✅ 完全响应式设计
+- ✅ 一键生成和下载配置文件
+- ✅ 详细的使用说明页面
 
-### 2️⃣ Python 推送脚�?
-- �?支持17种内容类型推�?
-- �?天气信息推�?
-- �?生日/纪念�?倒计时提�?
-- �?星座运势
-- �?命令行参数支�?
-- �?完善的错误处�?
+### 2️⃣ Python 推送脚本
+- ✅ 支持17种内容类型推送
+- ✅ 天气信息推送
+- ✅ 生日/纪念日/倒计时提醒
+- ✅ 星座运势
+- ✅ 命令行参数支持
+- ✅ 完善的错误处理
 
-### 3️⃣ 自动化部�?
-- �?GitHub Actions 定时推�?
-- �?GitHub Pages 自动部署
-- �?服务器一键安装脚�?
-- �?crontab 定时任务设置
+### 3️⃣ 自动化部署
+- ✅ GitHub Actions 定时推送
+- ✅ GitHub Pages 自动部署
+- ✅ 服务器一键安装脚本
+- ✅ crontab 定时任务设置
 
 ### 4️⃣ 文档系统
-- �?完整�?README 文档
-- �?快速开始指�?
-- �?详细的部署说�?
-- �?在线帮助页面
+- ✅ 完整的 README 文档
+- ✅ 快速开始指南
+- ✅ 详细的部署说明
+- ✅ 在线帮助页面
 
 ---
 
@@ -67,27 +67,27 @@ wexchatpush/
 ### 方式一：GitHub Pages（配置工具）
 
 1. **Fork 仓库**
-2. **启用 Pages**：Settings �?Pages �?Source: GitHub Actions
-3. **访问网页**：https://你的用户�?github.io/wexchatpush/
+2. **启用 Pages**：Settings → Pages → Source: GitHub Actions
+3. **访问网页**：https://hxzlplp7.github.io/wechat-push/
 
 ### 方式二：GitHub Actions（自动推送）
 
 1. **生成配置**：使用在线工具或手动配置
-2. **上传配置**：将 `config.txt` 上传�?`WeChatPush-Merged/`
-3. **自动运行**：GitHub Actions 按时推�?
+2. **上传配置**：将 `config.txt` 上传到 `WeChatPush-Merged/`
+3. **自动运行**：GitHub Actions 按时推送
 
-### 方式三：服务器部�?
+### 方式三：服务器部署
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/你的用户�?wexchatpush/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/hxzlplp7/wechat-push/main/install.sh)
 ```
 
 ---
 
-## 📋 下一步操�?
+## 📋 下一步操作
 
 ### 1. 配置仓库链接
-在以下文件中，将 `你的用户名` 替换为实际的 GitHub 用户名：
+在以下文件中，将 `hxzlplp7` 替换为实际的 GitHub 用户名：
 
 - `README.md`
 - `DEPLOYMENT.md`
@@ -103,7 +103,7 @@ git init
 git add .
 git commit -m "Initial commit: WeChat Push Tool"
 git branch -M main
-git remote add origin https://github.com/你的用户�?wexchatpush.git
+git remote add origin https://github.com/hxzlplp7/wechat-push.git
 git push -u origin main
 ```
 
@@ -116,23 +116,23 @@ git push -u origin main
 
 ### 4. 测试配置工具
 
-访问：`https://你的用户�?github.io/wexchatpush/`
+访问：`https://hxzlplp7.github.io/wechat-push/`
 
-### 5. 生成并测试配�?
+### 5. 生成并测试配置
 
 1. 使用在线工具生成 `config.txt`
-2. 上传�?`WeChatPush-Merged/` 目录
-3. 提交并推�?
-4. 查看 Actions 运行状�?
+2. 上传到 `WeChatPush-Merged/` 目录
+3. 提交并推送
+4. 查看 Actions 运行状态
 
 ---
 
 ## 🎨 技术栈
 
 ### 前端（配置工具）
-- **HTML5** - 语义化标�?
-- **CSS3** - 渐变、动画、玻璃态效�?
-- **Vanilla JavaScript** - 无框架依�?
+- **HTML5** - 语义化标签
+- **CSS3** - 渐变、动画、玻璃态效果
+- **Vanilla JavaScript** - 无框架依赖
 - **Google Fonts** - Inter 字体
 
 ### 后端（推送脚本）
@@ -140,9 +140,9 @@ git push -u origin main
 - **requests** - HTTP 请求
 - **zhdate** - 农历日期处理
 
-### 自动�?
+### 自动化
 - **GitHub Actions** - CI/CD
-- **GitHub Pages** - 静态网站托�?
+- **GitHub Pages** - 静态网站托管
 - **Crontab** - Linux 定时任务
 
 ---
@@ -150,46 +150,46 @@ git push -u origin main
 ## 💡 特色亮点
 
 ### 1. 用户体验
-- 🎨 **现代化设�?*：渐变色、玻璃态、微动画
-- 📱 **完全响应�?*：支持手机、平板、电�?
-- 🚀 **流畅交互**：平滑过渡、友好提�?
+- 🎨 **现代化设计**：渐变色、玻璃态、微动画
+- 📱 **完全响应式**：支持手机、平板、电脑
+- 🚀 **流畅交互**：平滑过渡、友好提示
 - 📖 **详细文档**：多层次文档系统
 
-### 2. 技术实�?
-- �?**纯前端实�?*：无需后端服务�?
-- 🔒 **数据安全**：所有配置本地生�?
-- 🌐 **零成本部�?*：GitHub Pages 免费托管
-- �?**高性能**：轻量级，加载快�?
+### 2. 技术实现
+- ✨ **纯前端实现**：无需后端服务器
+- 🔒 **数据安全**：所有配置本地生成
+- 🌐 **零成本部署**：GitHub Pages 免费托管
+- ⚡ **高性能**：轻量级，加载快速
 
-### 3. 易用�?
-- 🎯 **一键安�?*：服务器部署脚本
-- 📋 **向导式配�?*�?步完成配�?
-- 🔧 **灵活定制**：支持多种内容组�?
+### 3. 易用性
+- 🎯 **一键安装**：服务器部署脚本
+- 📋 **向导式配置**：5步完成配置
+- 🔧 **灵活定制**：支持多种内容组合
 - 📊 **清晰反馈**：详细的错误提示
 
 ---
 
 ## 🎉 项目亮点总结
 
-1. **完整的解决方�?*
-   - 配置工具 + 推送脚�?+ 部署方案
+1. **完整的解决方案**
+   - 配置工具 + 推送脚本 + 部署方案
    - 涵盖从配置到部署的全流程
 
-2. **精美的界面设�?*
+2. **精美的界面设计**
    - 动态背景、渐变色、微动画
    - 玻璃态效果、响应式布局
 
-3. **完善的文档体�?*
-   - README、快速开始、部署指�?
+3. **完善的文档体系**
+   - README、快速开始、部署指南
    - 在线帮助页面
 
-4. **灵活的部署方�?*
+4. **灵活的部署方式**
    - GitHub Pages + Actions
-   - 服务器一键安�?
+   - 服务器一键安装
    - 本地运行
 
-5. **丰富的功能支�?*
-   - 17种内容类�?
+5. **丰富的功能支持**
+   - 17种内容类型
    - 天气、生日、纪念日
    - 星座运势
 
@@ -199,17 +199,17 @@ git push -u origin main
 
 ### 在线配置工具
 ```
-访问：https://你的用户�?github.io/wexchatpush/
-填写 �?生成 �?下载 �?完成
+访问：https://hxzlplp7.github.io/wechat-push/
+填写 → 生成 → 下载 → 完成
 ```
 
-### 服务器部�?
+### 服务器部署
 ```bash
 # 安装
-bash <(curl -fsSL https://raw.githubusercontent.com/你的用户�?wexchatpush/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/hxzlplp7/wechat-push/main/install.sh)
 
 # 管理
-wechat-push start   # 立即推�?
+wechat-push start   # 立即推送
 wechat-push log     # 查看日志
 wechat-push config  # 编辑配置
 ```
@@ -222,22 +222,22 @@ git commit -m "Add config"
 git push
 
 # 自动运行
-# Actions 会按�?cron 时间自动推�?
+# Actions 会按照 cron 时间自动推送
 ```
 
 ---
 
 ## 🔗 相关链接
 
-- **GitHub 仓库**：https://github.com/你的用户�?wexchatpush
-- **配置工具**：https://你的用户�?github.io/wexchatpush/
-- **微信公众平台测试�?*：https://mp.weixin.qq.com/debug/cgi-bin/sandbox
+- **GitHub 仓库**：https://github.com/hxzlplp7/wechat-push
+- **配置工具**：https://hxzlplp7.github.io/wechat-push/
+- **微信公众平台测试号**：https://mp.weixin.qq.com/debug/cgi-bin/sandbox
 - **和风天气**：https://dev.qweather.com/
 - **天行数据**：https://www.tianapi.com/
 
 ---
 
 <p align="center">
-  <strong>�?项目已完成！准备好部署了�?/strong><br>
+  <strong>✨ 项目已完成！准备好部署了！</strong><br>
   Made with ❤️ for WeChat Push
 </p>

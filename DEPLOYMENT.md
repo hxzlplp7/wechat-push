@@ -1,142 +1,142 @@
-# 🚀 部署指南
+# 馃殌 閮ㄧ讲鎸囧崡
 
-## 📋 目录
+## 馃搵 鐩綍
 
-- [GitHub Pages 部署](#github-pages-部署)
-- [服务器部署](#服务器部�?
-- [GitHub Actions 自动推送](#github-actions-自动推�?
+- [GitHub Pages 閮ㄧ讲](#github-pages-閮ㄧ讲)
+- [鏈嶅姟鍣ㄩ儴缃瞉(#鏈嶅姟鍣ㄩ儴缃?
+- [GitHub Actions 鑷姩鎺ㄩ€乚(#github-actions-鑷姩鎺ㄩ€?
 
 ---
 
-## 🌐 GitHub Pages 部署
+## 馃寪 GitHub Pages 閮ㄧ讲
 
-将配置工具网页部署到 GitHub Pages，让任何人都能在线使用�?
+灏嗛厤缃伐鍏风綉椤甸儴缃插埌 GitHub Pages锛岃浠讳綍浜洪兘鑳藉湪绾夸娇鐢ㄣ€?
 
-### 步骤一：Fork 仓库
+### 姝ラ涓€锛欶ork 浠撳簱
 
-1. 访问项目仓库
-2. 点击右上角的 **Fork** 按钮
-3. 等待 Fork 完成
+1. 璁块棶椤圭洰浠撳簱
+2. 鐐瑰嚮鍙充笂瑙掔殑 **Fork** 鎸夐挳
+3. 绛夊緟 Fork 瀹屾垚
 
-### 步骤二：启用 GitHub Pages
+### 姝ラ浜岋細鍚敤 GitHub Pages
 
-1. 进入�?Fork 的仓�?
-2. 点击 **Settings** (设置)
-3. 在左侧菜单找�?**Pages**
-4. �?**Source** 下选择 **GitHub Actions**
+1. 杩涘叆浣?Fork 鐨勪粨搴?
+2. 鐐瑰嚮 **Settings** (璁剧疆)
+3. 鍦ㄥ乏渚ц彍鍗曟壘鍒?**Pages**
+4. 鍦?**Source** 涓嬮€夋嫨 **GitHub Actions**
 
-### 步骤三：触发部署
+### 姝ラ涓夛細瑙﹀彂閮ㄧ讲
 
-有两种方式触发部署：
+鏈変袱绉嶆柟寮忚Е鍙戦儴缃诧細
 
-#### 方式 1：推送代码（自动触发�?
+#### 鏂瑰紡 1锛氭帹閫佷唬鐮侊紙鑷姩瑙﹀彂锛?
 ```bash
 git add .
 git commit -m "update"
 git push
 ```
 
-#### 方式 2：手动触�?
-1. 进入仓库�?**Actions** 标签
-2. 选择 **Deploy to GitHub Pages** 工作�?
-3. 点击 **Run workflow**
-4. 点击绿色�?**Run workflow** 按钮
+#### 鏂瑰紡 2锛氭墜鍔ㄨЕ鍙?
+1. 杩涘叆浠撳簱鐨?**Actions** 鏍囩
+2. 閫夋嫨 **Deploy to GitHub Pages** 宸ヤ綔娴?
+3. 鐐瑰嚮 **Run workflow**
+4. 鐐瑰嚮缁胯壊鐨?**Run workflow** 鎸夐挳
 
-### 步骤四：访问网站
+### 姝ラ鍥涳細璁块棶缃戠珯
 
-部署完成后，访问�?
+閮ㄧ讲瀹屾垚鍚庯紝璁块棶锛?
 ```
-https://你的用户�?github.io/wexchatpush/
+https://浣犵殑鐢ㄦ埛鍚?github.io/wexchatpush/
 ```
 
-### 🎨 自定义域名（可选）
+### 馃帹 鑷畾涔夊煙鍚嶏紙鍙€夛級
 
-1. 在仓�?**Settings** �?**Pages** �?
-2. �?**Custom domain** 输入你的域名
-3. 在域�?DNS 设置中添�?CNAME 记录�?
+1. 鍦ㄤ粨搴?**Settings** 鈫?**Pages** 涓?
+2. 鍦?**Custom domain** 杈撳叆浣犵殑鍩熷悕
+3. 鍦ㄥ煙鍚?DNS 璁剧疆涓坊鍔?CNAME 璁板綍锛?
    ```
-   CNAME  你的用户�?github.io
+   CNAME  浣犵殑鐢ㄦ埛鍚?github.io
    ```
 
 ---
 
-## 🖥�?服务器部�?
+## 馃枼锔?鏈嶅姟鍣ㄩ儴缃?
 
-在你的服务器上自动安装和配置推送脚本�?
+鍦ㄤ綘鐨勬湇鍔″櫒涓婅嚜鍔ㄥ畨瑁呭拰閰嶇疆鎺ㄩ€佽剼鏈€?
 
-### 快速安装（一键脚本）
+### 蹇€熷畨瑁咃紙涓€閿剼鏈級
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/你的用户�?wexchatpush/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/浣犵殑鐢ㄦ埛鍚?wexchatpush/main/install.sh)
 ```
 
-或使�?`wget`�?
+鎴栦娇鐢?`wget`锛?
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/你的用户�?wexchatpush/main/install.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/浣犵殑鐢ㄦ埛鍚?wexchatpush/main/install.sh)
 ```
 
-### 安装过程
+### 瀹夎杩囩▼
 
-脚本会自动完成以下步骤：
+鑴氭湰浼氳嚜鍔ㄥ畬鎴愪互涓嬫楠わ細
 
-1. �?**检测系统环�?*
-   - 识别操作系统类型
-   - 检�?Python 版本
+1. 鉁?**妫€娴嬬郴缁熺幆澧?*
+   - 璇嗗埆鎿嶄綔绯荤粺绫诲瀷
+   - 妫€鏌?Python 鐗堟湰
 
-2. �?**安装依赖**
-   - 安装 Python 3.8+
-   - 安装 pip �?Git
-   - 安装项目依赖�?
+2. 鉁?**瀹夎渚濊禆**
+   - 瀹夎 Python 3.8+
+   - 瀹夎 pip 鍜?Git
+   - 瀹夎椤圭洰渚濊禆鍖?
 
-3. �?**下载项目**
-   - �?GitHub 克隆仓库
-   - 进入项目目录
+3. 鉁?**涓嬭浇椤圭洰**
+   - 浠?GitHub 鍏嬮殕浠撳簱
+   - 杩涘叆椤圭洰鐩綍
 
-4. �?**配置引导**
-   - 填写公众号信�?
-   - 配置 API 密钥
-   - 设置个人信息
+4. 鉁?**閰嶇疆寮曞**
+   - 濉啓鍏紬鍙蜂俊鎭?
+   - 閰嶇疆 API 瀵嗛挜
+   - 璁剧疆涓汉淇℃伅
 
-5. �?**测试运行**
-   - 测试配置是否正确
-   - 尝试发送消�?
+5. 鉁?**娴嬭瘯杩愯**
+   - 娴嬭瘯閰嶇疆鏄惁姝ｇ‘
+   - 灏濊瘯鍙戦€佹秷鎭?
 
-6. �?**设置定时任务**
-   - 选择推送时�?
-   - 添加 crontab 任务
+6. 鉁?**璁剧疆瀹氭椂浠诲姟**
+   - 閫夋嫨鎺ㄩ€佹椂闂?
+   - 娣诲姞 crontab 浠诲姟
 
-7. �?**创建管理命令**
-   - 生成 `wechat-push` 管理脚本
+7. 鉁?**鍒涘缓绠＄悊鍛戒护**
+   - 鐢熸垚 `wechat-push` 绠＄悊鑴氭湰
 
-### 管理命令
+### 绠＄悊鍛戒护
 
-安装完成后，可以使用以下命令管理�?
+瀹夎瀹屾垚鍚庯紝鍙互浣跨敤浠ヤ笅鍛戒护绠＄悊锛?
 
 ```bash
-# 立即推送消�?
+# 绔嬪嵆鎺ㄩ€佹秷鎭?
 wechat-push start
 
-# 查看推送日�?
+# 鏌ョ湅鎺ㄩ€佹棩蹇?
 wechat-push log
 
-# 编辑配置文件
+# 缂栬緫閰嶇疆鏂囦欢
 wechat-push config
 
-# 编辑定时任务
+# 缂栬緫瀹氭椂浠诲姟
 wechat-push cron
 
-# 更新项目
+# 鏇存柊椤圭洰
 wechat-push update
 
-# 查看状�?
+# 鏌ョ湅鐘舵€?
 wechat-push status
 ```
 
-### 手动部署
+### 鎵嬪姩閮ㄧ讲
 
-如果一键脚本失败，可以手动部署�?
+濡傛灉涓€閿剼鏈け璐ワ紝鍙互鎵嬪姩閮ㄧ讲锛?
 
-#### 1. 安装依赖
+#### 1. 瀹夎渚濊禆
 ```bash
 # Debian/Ubuntu
 sudo apt update
@@ -149,196 +149,196 @@ sudo yum install -y python3 python3-pip git
 sudo pacman -S python python-pip git
 ```
 
-#### 2. 克隆项目
+#### 2. 鍏嬮殕椤圭洰
 ```bash
-git clone https://github.com/你的用户�?wexchatpush.git
+git clone https://github.com/浣犵殑鐢ㄦ埛鍚?wexchatpush.git
 cd wexchatpush/WeChatPush-Merged
 ```
 
-#### 3. 安装 Python �?
+#### 3. 瀹夎 Python 鍖?
 ```bash
 pip3 install -r requirements.txt
 ```
 
-#### 4. 配置文件
+#### 4. 閰嶇疆鏂囦欢
 ```bash
 cp config.example.txt config.txt
-nano config.txt  # 或使�?vim 编辑
+nano config.txt  # 鎴栦娇鐢?vim 缂栬緫
 ```
 
-#### 5. 测试运行
+#### 5. 娴嬭瘯杩愯
 ```bash
 python3 main.py
 ```
 
-#### 6. 设置定时任务
+#### 6. 璁剧疆瀹氭椂浠诲姟
 ```bash
 crontab -e
 ```
 
-添加以下内容（根据需要调整时间和路径）：
+娣诲姞浠ヤ笅鍐呭锛堟牴鎹渶瑕佽皟鏁存椂闂村拰璺緞锛夛細
 ```cron
-# 每天早上 8:00 推�?
+# 姣忓ぉ鏃╀笂 8:00 鎺ㄩ€?
 0 8 * * * cd /path/to/WeChatPush-Merged && python3 main.py >> push.log 2>&1
 
-# 每天晚上 22:00 推�?
+# 姣忓ぉ鏅氫笂 22:00 鎺ㄩ€?
 0 22 * * * cd /path/to/WeChatPush-Merged && python3 main.py >> push.log 2>&1
 ```
 
 ---
 
-## 🤖 GitHub Actions 自动推�?
+## 馃 GitHub Actions 鑷姩鎺ㄩ€?
 
-使用 GitHub Actions 实现云端自动定时推送，无需服务器�?
+浣跨敤 GitHub Actions 瀹炵幇浜戠鑷姩瀹氭椂鎺ㄩ€侊紝鏃犻渶鏈嶅姟鍣ㄣ€?
 
-### 步骤一：准备配置文�?
+### 姝ラ涓€锛氬噯澶囬厤缃枃浠?
 
-1. 使用在线配置工具生成 `config.txt`
-2. 或手动复�?`config.example.txt` 并修�?
+1. 浣跨敤鍦ㄧ嚎閰嶇疆宸ュ叿鐢熸垚 `config.txt`
+2. 鎴栨墜鍔ㄥ鍒?`config.example.txt` 骞朵慨鏀?
 
-### 步骤二：上传配置文件
+### 姝ラ浜岋細涓婁紶閰嶇疆鏂囦欢
 
 ```bash
-# 克隆你的仓库
-git clone https://github.com/你的用户�?wexchatpush.git
+# 鍏嬮殕浣犵殑浠撳簱
+git clone https://github.com/浣犵殑鐢ㄦ埛鍚?wexchatpush.git
 cd wexchatpush/WeChatPush-Merged
 
-# 将配置文件放入目�?
-# 编辑或复制你�?config.txt
+# 灏嗛厤缃枃浠舵斁鍏ョ洰褰?
+# 缂栬緫鎴栧鍒朵綘鐨?config.txt
 
-# 提交并推�?
+# 鎻愪氦骞舵帹閫?
 git add config.txt
 git commit -m "Add config file"
 git push
 ```
 
-### 步骤三：查看工作�?
+### 姝ラ涓夛細鏌ョ湅宸ヤ綔娴?
 
-1. 进入仓库�?**Actions** 页面
-2. 等待工作流自动运�?
-3. 查看运行日志
+1. 杩涘叆浠撳簱鐨?**Actions** 椤甸潰
+2. 绛夊緟宸ヤ綔娴佽嚜鍔ㄨ繍琛?
+3. 鏌ョ湅杩愯鏃ュ織
 
-### 默认推送时�?
+### 榛樿鎺ㄩ€佹椂闂?
 
-| 时间（北京） | UTC 时间 | 推送内�?|
+| 鏃堕棿锛堝寳浜級 | UTC 鏃堕棿 | 鎺ㄩ€佸唴瀹?|
 |-------------|---------|---------|
-| 08:00 | 00:00 | 早安心语 + 天气 |
-| 12:00 | 04:00 | 健康小提�?|
-| 20:30 | 12:30 | 笑话 + 谜语 |
-| 22:00 | 14:00 | 晚安心语 |
-| 23:00 | 15:00 | 故事大全 |
+| 08:00 | 00:00 | 鏃╁畨蹇冭 + 澶╂皵 |
+| 12:00 | 04:00 | 鍋ュ悍灏忔彁绀?|
+| 20:30 | 12:30 | 绗戣瘽 + 璋滆 |
+| 22:00 | 14:00 | 鏅氬畨蹇冭 |
+| 23:00 | 15:00 | 鏁呬簨澶у叏 |
 
-### 修改推送时�?
+### 淇敼鎺ㄩ€佹椂闂?
 
-编辑 `.github/workflows/push.yml`�?
+缂栬緫 `.github/workflows/push.yml`锛?
 
 ```yaml
 on:
   schedule:
-    # 北京时间 = UTC + 8小时
-    # 例如：北京时�?08:00 = UTC 00:00
-    - cron: '0 0 * * *'  # 早上 08:00
-    - cron: '0 14 * * *' # 晚上 22:00
+    # 鍖椾含鏃堕棿 = UTC + 8灏忔椂
+    # 渚嬪锛氬寳浜椂闂?08:00 = UTC 00:00
+    - cron: '0 0 * * *'  # 鏃╀笂 08:00
+    - cron: '0 14 * * *' # 鏅氫笂 22:00
 ```
 
-Cron 表达式格式：
+Cron 琛ㄨ揪寮忔牸寮忥細
 ```
-分钟 小时 �?�?星期
-0    0   *  *  *     # 每天 00:00 UTC
-30   12  *  *  *     # 每天 12:30 UTC
-0    0,12 * *  *     # 每天 00:00 �?12:00 UTC
+鍒嗛挓 灏忔椂 鏃?鏈?鏄熸湡
+0    0   *  *  *     # 姣忓ぉ 00:00 UTC
+30   12  *  *  *     # 姣忓ぉ 12:30 UTC
+0    0,12 * *  *     # 姣忓ぉ 00:00 鍜?12:00 UTC
 ```
 
-### 手动触发推�?
+### 鎵嬪姩瑙﹀彂鎺ㄩ€?
 
-1. 进入 **Actions** 页面
-2. 选择推送工作流
-3. 点击 **Run workflow**
-4. 选择分支，点击绿色按�?
+1. 杩涘叆 **Actions** 椤甸潰
+2. 閫夋嫨鎺ㄩ€佸伐浣滄祦
+3. 鐐瑰嚮 **Run workflow**
+4. 閫夋嫨鍒嗘敮锛岀偣鍑荤豢鑹叉寜閽?
 
-### 查看推送日�?
+### 鏌ョ湅鎺ㄩ€佹棩蹇?
 
-1. 进入 **Actions** 页面
-2. 点击具体的工作流运行
-3. 点击 **push** 任务
-4. 展开步骤查看详细日志
+1. 杩涘叆 **Actions** 椤甸潰
+2. 鐐瑰嚮鍏蜂綋鐨勫伐浣滄祦杩愯
+3. 鐐瑰嚮 **push** 浠诲姟
+4. 灞曞紑姝ラ鏌ョ湅璇︾粏鏃ュ織
 
 ---
 
-## 🔧 常见问题
+## 馃敡 甯歌闂
 
-### Q: GitHub Actions 为什么没有自动运行？
+### Q: GitHub Actions 涓轰粈涔堟病鏈夎嚜鍔ㄨ繍琛岋紵
 
-**A**: 可能的原因：
-- 仓库�?0天内无活动（GitHub 会暂停定时任务）
-- Actions 未启用：Settings �?Actions �?选择允许所有操�?
-- 配置文件有误：检�?`config.txt` 格式
+**A**: 鍙兘鐨勫師鍥狅細
+- 浠撳簱杩?0澶╁唴鏃犳椿鍔紙GitHub 浼氭殏鍋滃畾鏃朵换鍔★級
+- Actions 鏈惎鐢細Settings 鈫?Actions 鈫?閫夋嫨鍏佽鎵€鏈夋搷浣?
+- 閰嶇疆鏂囦欢鏈夎锛氭鏌?`config.txt` 鏍煎紡
 
-**解决方法**�?
-1. 定期提交代码保持活跃
-2. 手动触发一次工作流
-3. 检查工作流日志排查错误
+**瑙ｅ喅鏂规硶**锛?
+1. 瀹氭湡鎻愪氦浠ｇ爜淇濇寔娲昏穬
+2. 鎵嬪姩瑙﹀彂涓€娆″伐浣滄祦
+3. 妫€鏌ュ伐浣滄祦鏃ュ織鎺掓煡閿欒
 
-### Q: 服务器定时任务不执行�?
+### Q: 鏈嶅姟鍣ㄥ畾鏃朵换鍔′笉鎵ц锛?
 
-**A**: 检查步骤：
+**A**: 妫€鏌ユ楠わ細
 
-1. 查看 crontab 是否正确�?
+1. 鏌ョ湅 crontab 鏄惁姝ｇ‘锛?
    ```bash
    crontab -l
    ```
 
-2. 检查日志文件：
+2. 妫€鏌ユ棩蹇楁枃浠讹細
    ```bash
    cat ~/wexchatpush/WeChatPush-Merged/push.log
    ```
 
-3. 手动测试�?
+3. 鎵嬪姩娴嬭瘯锛?
    ```bash
    wechat-push start
    ```
 
-4. 确认 cron 服务运行�?
+4. 纭 cron 鏈嶅姟杩愯锛?
    ```bash
    sudo systemctl status cron    # Debian/Ubuntu
    sudo systemctl status crond   # CentOS/RHEL
    ```
 
-### Q: 一键脚本安装失败？
+### Q: 涓€閿剼鏈畨瑁呭け璐ワ紵
 
-**A**: 常见原因�?
-- 网络问题：无法访�?GitHub
-- 权限问题：某些命令需�?sudo
-- 系统不支持：检查是否为受支持的系统
+**A**: 甯歌鍘熷洜锛?
+- 缃戠粶闂锛氭棤娉曡闂?GitHub
+- 鏉冮檺闂锛氭煇浜涘懡浠ら渶瑕?sudo
+- 绯荤粺涓嶆敮鎸侊細妫€鏌ユ槸鍚︿负鍙楁敮鎸佺殑绯荤粺
 
-**解决方法**�?
-1. 检查网络连�?
-2. 使用 `sudo` 运行脚本
-3. 手动安装（参考手动部署章节）
+**瑙ｅ喅鏂规硶**锛?
+1. 妫€鏌ョ綉缁滆繛鎺?
+2. 浣跨敤 `sudo` 杩愯鑴氭湰
+3. 鎵嬪姩瀹夎锛堝弬鑰冩墜鍔ㄩ儴缃茬珷鑺傦級
 
-### Q: 推送失败，提示 access_token 错误�?
+### Q: 鎺ㄩ€佸け璐ワ紝鎻愮ず access_token 閿欒锛?
 
-**A**: 检查配置：
-- `app_id` �?`app_secret` 是否正确
-- 是否在微信公众平台测试号中获�?
-- 配置文件格式是否正确（注意引号）
+**A**: 妫€鏌ラ厤缃細
+- `app_id` 鍜?`app_secret` 鏄惁姝ｇ‘
+- 鏄惁鍦ㄥ井淇″叕浼楀钩鍙版祴璇曞彿涓幏鍙?
+- 閰嶇疆鏂囦欢鏍煎紡鏄惁姝ｇ‘锛堟敞鎰忓紩鍙凤級
 
-### Q: GitHub Pages 404 错误�?
+### Q: GitHub Pages 404 閿欒锛?
 
-**A**: 解决步骤�?
-1. 确认 Actions 已成功运�?
-2. 检�?Settings �?Pages 是否正确配置
-3. 等待几分钟（部署需要时间）
-4. 清除浏览器缓�?
+**A**: 瑙ｅ喅姝ラ锛?
+1. 纭 Actions 宸叉垚鍔熻繍琛?
+2. 妫€鏌?Settings 鈫?Pages 鏄惁姝ｇ‘閰嶇疆
+3. 绛夊緟鍑犲垎閽燂紙閮ㄧ讲闇€瑕佹椂闂达級
+4. 娓呴櫎娴忚鍣ㄧ紦瀛?
 
-### Q: 如何更新项目�?
+### Q: 濡備綍鏇存柊椤圭洰锛?
 
-**服务器更�?*�?
+**鏈嶅姟鍣ㄦ洿鏂?*锛?
 ```bash
 wechat-push update
 ```
 
-**GitHub 更新**�?
+**GitHub 鏇存柊**锛?
 ```bash
 cd wexchatpush
 git pull
@@ -346,16 +346,16 @@ git pull
 
 ---
 
-## 📞 获取帮助
+## 馃摓 鑾峰彇甯姪
 
-如果遇到问题�?
+濡傛灉閬囧埌闂锛?
 
-1. 📖 查看 [README.md](../README.md) 完整文档
-2. 🐛 提交 [Issue](https://github.com/你的用户�?wexchatpush/issues)
-3. 💬 �?Discussions 中讨�?
+1. 馃摉 鏌ョ湅 [README.md](../README.md) 瀹屾暣鏂囨。
+2. 馃悰 鎻愪氦 [Issue](https://github.com/浣犵殑鐢ㄦ埛鍚?wexchatpush/issues)
+3. 馃挰 鍦?Discussions 涓璁?
 
 ---
 
 <p align="center">
-  <strong>祝你部署成功！�?/strong>
+  <strong>绁濅綘閮ㄧ讲鎴愬姛锛侌煄?/strong>
 </p>
