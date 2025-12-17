@@ -1,17 +1,17 @@
 #!/bin/bash
 
 #================================================================
-# 微信公众号推送工�?- 服务器一键安装脚�?# 
-# 功能�?# - 自动检测系统环�?# - 安装 Python 3 及依�?# - 配置项目文件
-# - 设置定时任务
-# - 提供管理命令
+# 寰俊鍏紬鍙锋帹閫佸伐鍏?- 鏈嶅姟鍣ㄤ竴閿畨瑁呰剼鏈?# 
+# 鍔熻兘锛?# - 鑷姩妫€娴嬬郴缁熺幆澧?# - 瀹夎 Python 3 鍙婁緷璧?# - 閰嶇疆椤圭洰鏂囦欢
+# - 璁剧疆瀹氭椂浠诲姟
+# - 鎻愪緵绠＄悊鍛戒护
 #
-# 使用方法�?# bash <(curl -fsSL https://raw.githubusercontent.com/你的用户�?wexchatpush/main/install.sh)
+# 浣跨敤鏂规硶锛?# bash <(curl -fsSL https://raw.githubusercontent.com/浣犵殑鐢ㄦ埛鍚?wexchatpush/main/install.sh)
 #================================================================
 
 set -e
 
-# 颜色定义
+# 棰滆壊瀹氫箟
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -20,12 +20,12 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-# 配置变量
-REPO_URL="https://github.com/你的用户�?wexchatpush.git"
+# 閰嶇疆鍙橀噺
+REPO_URL="https://github.com/浣犵殑鐢ㄦ埛鍚?wexchatpush.git"
 INSTALL_DIR="$HOME/wexchatpush"
 PROJECT_DIR="$INSTALL_DIR/WeChatPush-Merged"
 
-# 打印带颜色的消息
+# 鎵撳嵃甯﹂鑹茬殑娑堟伅
 print_info() {
     echo -e "${CYAN}[INFO]${NC} $1"
 }
@@ -46,16 +46,16 @@ print_step() {
     echo -e "\n${PURPLE}==>${NC} ${BLUE}$1${NC}\n"
 }
 
-# 打印横幅
+# 鎵撳嵃妯箙
 print_banner() {
     echo -e "${CYAN}"
     cat << "EOF"
-╔═══════════════════════════════════════════════════════�?�?                                                      �?�?  微信公众号消息推送工�?- 一键安装脚�?              �?�?                                                      �?�?  🚀 自动化部�?                                      �?�?  �?定时推�?                                        �?�?  💬 多种内容                                         �?�?                                                      �?╚═══════════════════════════════════════════════════════�?EOF
+鈺斺晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?鈺?                                                      鈺?鈺?  寰俊鍏紬鍙锋秷鎭帹閫佸伐鍏?- 涓€閿畨瑁呰剼鏈?              鈺?鈺?                                                      鈺?鈺?  馃殌 鑷姩鍖栭儴缃?                                      鈺?鈺?  鈴?瀹氭椂鎺ㄩ€?                                        鈺?鈺?  馃挰 澶氱鍐呭                                         鈺?鈺?                                                      鈺?鈺氣晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?EOF
     echo -e "${NC}\n"
 }
 
-# 检测系统类�?detect_os() {
-    print_step "检测系统环�?
+# 妫€娴嬬郴缁熺被鍨?detect_os() {
+    print_step "妫€娴嬬郴缁熺幆澧?
     
     if [ -f /etc/os-release ]; then
         . /etc/os-release
@@ -66,36 +66,36 @@ print_banner() {
         VER=$(uname -r)
     fi
     
-    print_info "操作系统: $OS"
-    print_info "版本: $VER"
+    print_info "鎿嶄綔绯荤粺: $OS"
+    print_info "鐗堟湰: $VER"
 }
 
-# 检�?Python 版本
+# 妫€鏌?Python 鐗堟湰
 check_python() {
-    print_step "检�?Python 环境"
+    print_step "妫€鏌?Python 鐜"
     
     if command -v python3 &> /dev/null; then
         PYTHON_VERSION=$(python3 --version | awk '{print $2}')
-        print_success "已安�?Python $PYTHON_VERSION"
+        print_success "宸插畨瑁?Python $PYTHON_VERSION"
         
-        # 检查版本是否满足要求（3.8+�?        MAJOR=$(echo $PYTHON_VERSION | cut -d. -f1)
+        # 妫€鏌ョ増鏈槸鍚︽弧瓒宠姹傦紙3.8+锛?        MAJOR=$(echo $PYTHON_VERSION | cut -d. -f1)
         MINOR=$(echo $PYTHON_VERSION | cut -d. -f2)
         
         if [ "$MAJOR" -ge 3 ] && [ "$MINOR" -ge 8 ]; then
-            print_success "Python 版本满足要求"
+            print_success "Python 鐗堟湰婊¤冻瑕佹眰"
             return 0
         else
-            print_warning "Python 版本过低，建议升级到 3.8+"
+            print_warning "Python 鐗堟湰杩囦綆锛屽缓璁崌绾у埌 3.8+"
         fi
     else
-        print_warning "未检测到 Python 3"
+        print_warning "鏈娴嬪埌 Python 3"
         return 1
     fi
 }
 
-# 安装 Python
+# 瀹夎 Python
 install_python() {
-    print_step "安装 Python 3"
+    print_step "瀹夎 Python 3"
     
     case $OS in
         ubuntu|debian)
@@ -109,19 +109,19 @@ install_python() {
             sudo pacman -S --noconfirm python python-pip
             ;;
         *)
-            print_error "不支持的操作系统: $OS"
-            print_info "请手动安�?Python 3.8+"
+            print_error "涓嶆敮鎸佺殑鎿嶄綔绯荤粺: $OS"
+            print_info "璇锋墜鍔ㄥ畨瑁?Python 3.8+"
             exit 1
             ;;
     esac
     
-    print_success "Python 安装完成"
+    print_success "Python 瀹夎瀹屾垚"
 }
 
-# 安装 Git
+# 瀹夎 Git
 install_git() {
     if ! command -v git &> /dev/null; then
-        print_step "安装 Git"
+        print_step "瀹夎 Git"
         
         case $OS in
             ubuntu|debian)
@@ -135,116 +135,116 @@ install_git() {
                 ;;
         esac
         
-        print_success "Git 安装完成"
+        print_success "Git 瀹夎瀹屾垚"
     fi
 }
 
-# 克隆项目
+# 鍏嬮殕椤圭洰
 clone_project() {
-    print_step "下载项目文件"
+    print_step "涓嬭浇椤圭洰鏂囦欢"
     
     if [ -d "$INSTALL_DIR" ]; then
-        print_warning "检测到已存在的安装目录"
-        read -p "是否删除并重新安�? (y/N): " -n 1 -r
+        print_warning "妫€娴嬪埌宸插瓨鍦ㄧ殑瀹夎鐩綍"
+        read -p "鏄惁鍒犻櫎骞堕噸鏂板畨瑁? (y/N): " -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             rm -rf "$INSTALL_DIR"
         else
-            print_info "取消安装"
+            print_info "鍙栨秷瀹夎"
             exit 0
         fi
     fi
     
     git clone "$REPO_URL" "$INSTALL_DIR"
-    print_success "项目下载完成"
+    print_success "椤圭洰涓嬭浇瀹屾垚"
 }
 
-# 安装 Python 依赖
+# 瀹夎 Python 渚濊禆
 install_dependencies() {
-    print_step "安装 Python 依赖�?
+    print_step "瀹夎 Python 渚濊禆鍖?
     
     cd "$PROJECT_DIR"
     
     if [ -f "requirements.txt" ]; then
         python3 -m pip install --user -r requirements.txt
-        print_success "依赖包安装完�?
+        print_success "渚濊禆鍖呭畨瑁呭畬鎴?
     else
-        print_error "未找�?requirements.txt"
+        print_error "鏈壘鍒?requirements.txt"
         exit 1
     fi
 }
 
-# 配置引导
+# 閰嶇疆寮曞
 configure_project() {
-    print_step "配置项目"
+    print_step "閰嶇疆椤圭洰"
     
     cd "$PROJECT_DIR"
     
     if [ -f "config.txt" ]; then
-        print_warning "检测到已存在的配置文件"
-        read -p "是否重新配置? (y/N): " -n 1 -r
+        print_warning "妫€娴嬪埌宸插瓨鍦ㄧ殑閰嶇疆鏂囦欢"
+        read -p "鏄惁閲嶆柊閰嶇疆? (y/N): " -n 1 -r
         echo
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             return
         fi
     fi
     
-    echo -e "\n${CYAN}========== 配置引导 ==========${NC}\n"
+    echo -e "\n${CYAN}========== 閰嶇疆寮曞 ==========${NC}\n"
     
-    # 公众号配�?    echo -e "${BLUE}1. 公众号配�?{NC}"
-    read -p "请输�?AppID: " APP_ID
-    read -p "请输�?AppSecret: " APP_SECRET
-    read -p "请输�?模板消息ID: " TEMPLATE_ID
-    read -p "请输�?用户OpenID (多个用逗号分隔): " USER_IDS
+    # 鍏紬鍙烽厤缃?    echo -e "${BLUE}1. 鍏紬鍙烽厤缃?{NC}"
+    read -p "璇疯緭鍏?AppID: " APP_ID
+    read -p "璇疯緭鍏?AppSecret: " APP_SECRET
+    read -p "璇疯緭鍏?妯℃澘娑堟伅ID: " TEMPLATE_ID
+    read -p "璇疯緭鍏?鐢ㄦ埛OpenID (澶氫釜鐢ㄩ€楀彿鍒嗛殧): " USER_IDS
     
-    # API密钥
-    echo -e "\n${BLUE}2. API密钥配置${NC}"
-    read -p "请输�?和风天气Key: " WEATHER_KEY
-    read -p "请输�?天行数据Key: " TIAN_API
+    # API瀵嗛挜
+    echo -e "\n${BLUE}2. API瀵嗛挜閰嶇疆${NC}"
+    read -p "璇疯緭鍏?鍜岄澶╂皵Key: " WEATHER_KEY
+    read -p "璇疯緭鍏?澶╄鏁版嵁Key: " TIAN_API
     
-    # 个人信息
-    echo -e "\n${BLUE}3. 个人信息${NC}"
-    read -p "请输�?地区 (默认: 北京): " REGION
-    REGION=${REGION:-北京}
+    # 涓汉淇℃伅
+    echo -e "\n${BLUE}3. 涓汉淇℃伅${NC}"
+    read -p "璇疯緭鍏?鍦板尯 (榛樿: 鍖椾含): " REGION
+    REGION=${REGION:-鍖椾含}
     
-    read -p "是否配置生日? (y/N): " -n 1 -r
+    read -p "鏄惁閰嶇疆鐢熸棩? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        read -p "请输入名�? " BIRTHDAY_NAME
-        read -p "请输入生�?(格式: YYYY-MM-DD): " BIRTHDAY_DATE
-        read -p "是否为农�? (y/N): " -n 1 -r
+        read -p "璇疯緭鍏ュ悕瀛? " BIRTHDAY_NAME
+        read -p "璇疯緭鍏ョ敓鏃?(鏍煎紡: YYYY-MM-DD): " BIRTHDAY_DATE
+        read -p "鏄惁涓哄啘鍘? (y/N): " -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             BIRTHDAY_DATE="r$BIRTHDAY_DATE"
         fi
     fi
     
-    read -p "是否配置纪念�? (y/N): " -n 1 -r
+    read -p "鏄惁閰嶇疆绾康鏃? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        read -p "请输入纪念日 (格式: YYYY-MM-DD): " COMMEMORATION_DATE
+        read -p "璇疯緭鍏ョ邯蹇垫棩 (鏍煎紡: YYYY-MM-DD): " COMMEMORATION_DATE
     fi
     
-    # 生成配置文件
+    # 鐢熸垚閰嶇疆鏂囦欢
     cat > config.txt << EOF
 {
-# 公众号配�?"app_id": "$APP_ID",
+# 鍏紬鍙烽厤缃?"app_id": "$APP_ID",
 "app_secret": "$APP_SECRET",
 "template_id": "$TEMPLATE_ID",
 "user": [$(echo "$USER_IDS" | sed 's/,/", "/g' | sed 's/^/"/' | sed 's/$/"/')],
 
-# API密钥
+# API瀵嗛挜
 "weather_key": "$WEATHER_KEY",
 "tian_api": "$TIAN_API",
 
-# 地区配置
+# 鍦板尯閰嶇疆
 "region": "$REGION",
 EOF
 
     if [ ! -z "$BIRTHDAY_NAME" ]; then
         cat >> config.txt << EOF
 
-# 生日配置
+# 鐢熸棩閰嶇疆
 "birthday1": {"name": "$BIRTHDAY_NAME", "birthday": "$BIRTHDAY_DATE"},
 EOF
     fi
@@ -252,17 +252,17 @@ EOF
     if [ ! -z "$COMMEMORATION_DATE" ]; then
         cat >> config.txt << EOF
 
-# 纪念日配�?"commemoration_day1": "$COMMEMORATION_DATE",
+# 绾康鏃ラ厤缃?"commemoration_day1": "$COMMEMORATION_DATE",
 EOF
     fi
 
     cat >> config.txt << EOF
 
-# 金句配置
+# 閲戝彞閰嶇疆
 "note_ch": "",
 "note_en": "",
 
-# 颜色配置（留空使用随机颜色）
+# 棰滆壊閰嶇疆锛堢暀绌轰娇鐢ㄩ殢鏈洪鑹诧級
 "color_date": "",
 "color_region": "",
 "color_weather": "",
@@ -271,42 +271,42 @@ EOF
 }
 EOF
     
-    print_success "配置文件已生�?
+    print_success "閰嶇疆鏂囦欢宸茬敓鎴?
 }
 
-# 测试运行
+# 娴嬭瘯杩愯
 test_run() {
-    print_step "测试运行"
+    print_step "娴嬭瘯杩愯"
     
     cd "$PROJECT_DIR"
     
-    read -p "是否立即测试推�? (y/N): " -n 1 -r
+    read -p "鏄惁绔嬪嵆娴嬭瘯鎺ㄩ€? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        print_info "开始测试推�?.."
+        print_info "寮€濮嬫祴璇曟帹閫?.."
         python3 main.py
         
         if [ $? -eq 0 ]; then
-            print_success "测试推送成功！"
+            print_success "娴嬭瘯鎺ㄩ€佹垚鍔燂紒"
         else
-            print_error "测试推送失败，请检查配�?
+            print_error "娴嬭瘯鎺ㄩ€佸け璐ワ紝璇锋鏌ラ厤缃?
         fi
     fi
 }
 
-# 设置定时任务
+# 璁剧疆瀹氭椂浠诲姟
 setup_cron() {
-    print_step "设置定时任务"
+    print_step "璁剧疆瀹氭椂浠诲姟"
     
-    read -p "是否设置定时推�? (Y/n): " -n 1 -r
+    read -p "鏄惁璁剧疆瀹氭椂鎺ㄩ€? (Y/n): " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-        echo -e "\n${CYAN}请选择推送时�?${NC}"
-        echo "1) 每天早上 8:00"
-        echo "2) 每天晚上 22:00"
-        echo "3) 早上 8:00 �?晚上 22:00"
-        echo "4) 自定义时�?
-        read -p "请选择 (1-4): " CRON_CHOICE
+        echo -e "\n${CYAN}璇烽€夋嫨鎺ㄩ€佹椂闂?${NC}"
+        echo "1) 姣忓ぉ鏃╀笂 8:00"
+        echo "2) 姣忓ぉ鏅氫笂 22:00"
+        echo "3) 鏃╀笂 8:00 鍜?鏅氫笂 22:00"
+        echo "4) 鑷畾涔夋椂闂?
+        read -p "璇烽€夋嫨 (1-4): " CRON_CHOICE
         
         case $CRON_CHOICE in
             1)
@@ -319,29 +319,29 @@ setup_cron() {
                 CRON_SCHEDULE="0 8,22 * * *"
                 ;;
             4)
-                read -p "请输�?cron 表达�? " CRON_SCHEDULE
+                read -p "璇疯緭鍏?cron 琛ㄨ揪寮? " CRON_SCHEDULE
                 ;;
             *)
-                print_warning "无效选择，跳过定时任务设�?
+                print_warning "鏃犳晥閫夋嫨锛岃烦杩囧畾鏃朵换鍔¤缃?
                 return
                 ;;
         esac
         
-        # 添加�?crontab
+        # 娣诲姞鍒?crontab
         CRON_COMMAND="cd $PROJECT_DIR && /usr/bin/python3 main.py >> $PROJECT_DIR/push.log 2>&1"
         
-        # 检查是否已存在
+        # 妫€鏌ユ槸鍚﹀凡瀛樺湪
         (crontab -l 2>/dev/null | grep -v "$PROJECT_DIR/main.py"; echo "$CRON_SCHEDULE $CRON_COMMAND") | crontab -
         
-        print_success "定时任务设置完成"
-        print_info "推送时�? $CRON_SCHEDULE"
-        print_info "日志文件: $PROJECT_DIR/push.log"
+        print_success "瀹氭椂浠诲姟璁剧疆瀹屾垚"
+        print_info "鎺ㄩ€佹椂闂? $CRON_SCHEDULE"
+        print_info "鏃ュ織鏂囦欢: $PROJECT_DIR/push.log"
     fi
 }
 
-# 创建管理脚本
+# 鍒涘缓绠＄悊鑴氭湰
 create_manager() {
-    print_step "创建管理脚本"
+    print_step "鍒涘缓绠＄悊鑴氭湰"
     
     cat > "$HOME/wechat-push" << 'EOF'
 #!/bin/bash
@@ -351,7 +351,7 @@ LOG_FILE="$PROJECT_DIR/push.log"
 
 case "$1" in
     start)
-        echo "执行推�?.."
+        echo "鎵ц鎺ㄩ€?.."
         cd "$PROJECT_DIR"
         python3 main.py
         ;;
@@ -360,7 +360,7 @@ case "$1" in
         if [ -f "$LOG_FILE" ]; then
             tail -f "$LOG_FILE"
         else
-            echo "日志文件不存�?
+            echo "鏃ュ織鏂囦欢涓嶅瓨鍦?
         fi
         ;;
     
@@ -373,101 +373,101 @@ case "$1" in
         ;;
     
     update)
-        echo "更新项目..."
+        echo "鏇存柊椤圭洰..."
         cd "$HOME/wexchatpush"
         git pull
         cd "$PROJECT_DIR"
         pip3 install --user -r requirements.txt
-        echo "更新完成"
+        echo "鏇存柊瀹屾垚"
         ;;
     
     status)
-        echo "检查定时任�?.."
-        crontab -l | grep wexchatpush || echo "未设置定时任�?
+        echo "妫€鏌ュ畾鏃朵换鍔?.."
+        crontab -l | grep wexchatpush || echo "鏈缃畾鏃朵换鍔?
         ;;
     
     *)
-        echo "微信公众号推送工�?- 管理脚本"
+        echo "寰俊鍏紬鍙锋帹閫佸伐鍏?- 绠＄悊鑴氭湰"
         echo ""
-        echo "用法: wechat-push [命令]"
+        echo "鐢ㄦ硶: wechat-push [鍛戒护]"
         echo ""
-        echo "命令:"
-        echo "  start   - 立即执行推�?
-        echo "  log     - 查看推送日�?
-        echo "  config  - 编辑配置文件"
-        echo "  cron    - 编辑定时任务"
-        echo "  update  - 更新项目"
-        echo "  status  - 查看状�?
+        echo "鍛戒护:"
+        echo "  start   - 绔嬪嵆鎵ц鎺ㄩ€?
+        echo "  log     - 鏌ョ湅鎺ㄩ€佹棩蹇?
+        echo "  config  - 缂栬緫閰嶇疆鏂囦欢"
+        echo "  cron    - 缂栬緫瀹氭椂浠诲姟"
+        echo "  update  - 鏇存柊椤圭洰"
+        echo "  status  - 鏌ョ湅鐘舵€?
         ;;
 esac
 EOF
     
     chmod +x "$HOME/wechat-push"
     
-    # 添加�?PATH（如果不在）
+    # 娣诲姞鍒?PATH锛堝鏋滀笉鍦級
     if [[ ":$PATH:" != *":$HOME:"* ]]; then
         echo 'export PATH="$HOME:$PATH"' >> "$HOME/.bashrc"
         export PATH="$HOME:$PATH"
     fi
     
-    print_success "管理脚本已创�? wechat-push"
+    print_success "绠＄悊鑴氭湰宸插垱寤? wechat-push"
 }
 
-# 完成安装
+# 瀹屾垚瀹夎
 finish_installation() {
     echo -e "\n${GREEN}"
     cat << "EOF"
-╔═══════════════════════════════════════════════════════�?�?                                                      �?�?             �?安装完成�?                           �?�?                                                      �?╚═══════════════════════════════════════════════════════�?EOF
+鈺斺晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?鈺?                                                      鈺?鈺?             鉁?瀹夎瀹屾垚锛?                           鈺?鈺?                                                      鈺?鈺氣晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?EOF
     echo -e "${NC}\n"
     
-    echo -e "${CYAN}📁 安装目录:${NC} $INSTALL_DIR"
-    echo -e "${CYAN}📝 配置文件:${NC} $PROJECT_DIR/config.txt"
-    echo -e "${CYAN}📊 日志文件:${NC} $PROJECT_DIR/push.log"
+    echo -e "${CYAN}馃搧 瀹夎鐩綍:${NC} $INSTALL_DIR"
+    echo -e "${CYAN}馃摑 閰嶇疆鏂囦欢:${NC} $PROJECT_DIR/config.txt"
+    echo -e "${CYAN}馃搳 鏃ュ織鏂囦欢:${NC} $PROJECT_DIR/push.log"
     echo ""
-    echo -e "${YELLOW}常用命令:${NC}"
-    echo -e "  ${GREEN}wechat-push start${NC}  - 立即推�?
-    echo -e "  ${GREEN}wechat-push log${NC}    - 查看日志"
-    echo -e "  ${GREEN}wechat-push config${NC} - 编辑配置"
-    echo -e "  ${GREEN}wechat-push status${NC} - 查看状�?
+    echo -e "${YELLOW}甯哥敤鍛戒护:${NC}"
+    echo -e "  ${GREEN}wechat-push start${NC}  - 绔嬪嵆鎺ㄩ€?
+    echo -e "  ${GREEN}wechat-push log${NC}    - 鏌ョ湅鏃ュ織"
+    echo -e "  ${GREEN}wechat-push config${NC} - 缂栬緫閰嶇疆"
+    echo -e "  ${GREEN}wechat-push status${NC} - 鏌ョ湅鐘舵€?
     echo ""
-    echo -e "${BLUE}💡 提示:${NC} 运行 ${GREEN}wechat-push${NC} 查看所有命�?
+    echo -e "${BLUE}馃挕 鎻愮ず:${NC} 杩愯 ${GREEN}wechat-push${NC} 鏌ョ湅鎵€鏈夊懡浠?
     echo ""
 }
 
-# 主函�?main() {
+# 涓诲嚱鏁?main() {
     clear
     print_banner
     
     detect_os
     
-    # 检查并安装 Python
+    # 妫€鏌ュ苟瀹夎 Python
     if ! check_python; then
         install_python
     fi
     
-    # 安装 Git
+    # 瀹夎 Git
     install_git
     
-    # 克隆项目
+    # 鍏嬮殕椤圭洰
     clone_project
     
-    # 安装依赖
+    # 瀹夎渚濊禆
     install_dependencies
     
-    # 配置项目
+    # 閰嶇疆椤圭洰
     configure_project
     
-    # 测试运行
+    # 娴嬭瘯杩愯
     test_run
     
-    # 设置定时任务
+    # 璁剧疆瀹氭椂浠诲姟
     setup_cron
     
-    # 创建管理脚本
+    # 鍒涘缓绠＄悊鑴氭湰
     create_manager
     
-    # 完成
+    # 瀹屾垚
     finish_installation
 }
 
-# 执行主函�?main
+# 鎵ц涓诲嚱鏁?main
