@@ -1,0 +1,92 @@
+{
+# ============== 公众号配置 ==============
+# 公众号appId (必填)
+"app_id": "your_app_id_here",
+# 公众号appSecret (必填)
+"app_secret": "your_app_secret_here",
+# 模板消息id (必填)
+"template_id": "your_template_id_here",
+# 接收公众号消息的微信号openid，如果有多个，需要在[]里用英文逗号间隔
+"user": ["openid1", "openid2"],
+
+# ============== API密钥配置 ==============
+# 和风天气apikey (用于获取天气数据)
+"weather_key": "your_weather_key_here",
+# 天行数据apikey (用于获取各种内容)
+"tian_api": "your_tianapi_key_here",
+
+# ============== 地区配置 ==============
+# 所在地区，可为省、城市、区、县，同时支持国外城市
+"region": "北京",
+# 可配置多个地区
+# "region1": "上海",
+# "region2": "广州",
+
+# ============== 生日配置 ==============
+# 生日1，在日期前加r代表农历生日
+"birthday1": {"name": "小明", "birthday": "2000-01-01"},
+# "birthday2": {"name": "小红", "birthday": "r2000-08-15"},
+
+# ============== 纪念日配置 ==============
+# 纪念日1，会计算累计时间，格式"YYYY-MM-DD"
+"commemoration_day1": "2020-01-01",
+# "commemoration_day2": "2021-05-20",
+
+# ============== 倒计时配置 ==============
+# 倒计时1，日期不小于当天日期
+"countdown1": "2025-12-31",
+# "countdown2": "2024-02-14",
+
+# ============== 金句配置 ==============
+# 金句中文，留空默认显示金山的每日金句
+"note_ch": "",
+# 金句英文
+"note_en": "",
+
+# ============== 星座配置 ==============
+# 星座运势，12星座英文名:
+# aries 白羊座, taurus 金牛座, gemini 双子座, cancer 巨蟹座
+# leo 狮子座, virgo 处女座, libra 天秤座, scorpio 天蝎座
+# sagittarius 射手座, capricorn 摩羯座, aquarius 水瓶座, pisces 双鱼座
+"horoscope1": "aries",
+
+# ============== 字体颜色配置 ==============
+# 使用RGB颜色(如#000000黑色)，留空颜色默认随机
+"color_date":                     "",          # 日期字体颜色
+"color_region":                   "",          # 地区字体颜色
+"color_weather":                  "",          # 天气字体颜色
+"color_temp":                     "",          # 当前温度字体颜色
+"color_wind":                     "",          # 当前风向字体颜色
+"color_note_en":                  "",          # 金句英文字体颜色
+"color_note_zh":                  "",          # 金句中文字体颜色
+"color_max_temp":                 "",          # 最高温度字体颜色
+"color_min_temp":                 "",          # 最低温度字体颜色
+"color_sunrise":                  "",          # 日出字体颜色
+"color_sunset":                   "",          # 日落字体颜色
+"color_category":                 "",          # 空气质量字体颜色
+"color_pm2p5":                    "",          # pm2.5字体颜色
+"color_proposal":                 "",          # 今日建议字体颜色
+"color_chp":                      "",          # 彩虹屁字体颜色
+"color_birthday1":                "",          # 生日1字体颜色
+"color_birthday2":                "",          # 生日2字体颜色
+"color_commemoration_day1":       "",          # 纪念日1字体颜色
+"color_commemoration_day2":       "",          # 纪念日2字体颜色
+"color_yq":                       "",          # 疫情数据字体颜色
+"color_horoscope1":               "",          # 星座运势1字体颜色
+"color_countdown1":               "",          # 倒计时日1字体颜色
+"color_countdown2":               "",          # 倒计时2字体颜色
+"color_xqm":                      "",          # 生活小窍门字体颜色
+"color_health_tip":               "",          # 健康小提示字体颜色
+"color_saylove":                  "",          # 土味情话字体颜色
+"color_zaoan":                    "",          # 早安心语字体颜色
+"color_wanan":                    "",          # 晚安心语字体颜色
+"color_dujitang":                 "",          # 毒鸡汤字体颜色
+"color_tiangou":                  "",          # 舔狗日记字体颜色
+"color_mnpara":                   "",          # 小段子字体颜色
+"color_wenan":                    "",          # 微信朋友圈文案字体颜色
+"color_proverb":                  "",          # 文化谚语字体颜色
+"color_joke":                     "",          # 雷人笑话字体颜色
+"color_riddle":                   "",          # 谜语大全字体颜色
+"color_naowan":                   "",          # 脑筋急转弯字体颜色
+"color_story":                    "",          # 故事大全字体颜色
+}

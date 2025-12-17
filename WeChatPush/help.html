@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用说明 - 微信公众号推送配置工�?/title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f23;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: transform 0.2s;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .section ul,
+        .section ol {
+            margin-left: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #a5d6ff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .tip {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: rgba(245, 87, 108, 0.1);
+            border-left: 4px solid #f5576c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .step {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="btn-back">
+            �?返回配置工具
+        </a>
+
+        <div class="header">
+            <h1>📖 使用说明</h1>
+            <p>详细的配置和使用指南</p>
+        </div>
+
+        <!-- 准备工作 -->
+        <div class="section">
+            <h2>📋 准备工作</h2>
+
+            <h3>1. 注册微信公众号测试账�?/h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <p>访问微信公众平台测试号申请页面：</p>
+                    <div class="code-block">
+                        <code>https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <p>使用微信扫码登录</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <p>获取 <strong>appID</strong> �?<strong>appsecret</strong></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <p>使用微信扫码关注测试号，�?用户列表"中获�?<strong>OpenID</strong></p>
+                </div>
+            </div>
+
+            <h3>2. 创建模板消息</h3>
+            <p>在测试号管理页面，点�?新增测试模板"，输入以下模板内容：</p>
+            <div class="code-block">
+                <code>📅 {{date.DATA}}<br>
+🌤�?{{region.DATA}} {{weather.DATA}}<br>
+🌡�?{{temp.DATA}} ({{min_temp.DATA}} ~ {{max_temp.DATA}})<br>
+💨 {{wind_dir.DATA}}<br>
+<br>
+💑 在一�?{{commemoration_day1.DATA}} �?br>
+🎂 {{birthday1.DATA}}<br>
+<br>
+�?{{zaoan.DATA}}<br>
+<br>
+📝 {{note_ch.DATA}}</code>
+            </div>
+            <p>提交后获�?<strong>模板ID</strong></p>
+
+            <div class="tip">
+                <strong>💡 提示�?/strong> 模板内容可以根据需要自定义，只需确保使用正确的变量名�?
+            </div>
+
+            <h3>3. 获取 API 密钥</h3>
+
+            <p><strong>和风天气（必需�?/strong></p>
+            <ul>
+                <li>访问�?a href="https://dev.qweather.com/" target="_blank"
+                        style="color: #667eea;">https://dev.qweather.com/</a></li>
+                <li>注册账号并创建应�?/li>
+                <li>获取免费�?API Key</li>
+            </ul>
+
+            <p><strong>天行数据（推荐）</strong></p>
+            <ul>
+                <li>访问�?a href="https://www.tianapi.com/" target="_blank"
+                        style="color: #667eea;">https://www.tianapi.com/</a></li>
+                <li>注册账号</li>
+                <li>获取免费 API Key</li>
+            </ul>
+        </div>
+
+        <!-- 使用配置工具 -->
+        <div class="section">
+            <h2>🎨 使用配置工具</h2>
+
+            <h3>步骤 1：公众号配置</h3>
+            <ul>
+                <li><strong>AppID</strong>：从测试号管理页面复�?/li>
+                <li><strong>AppSecret</strong>：从测试号管理页面复�?/li>
+                <li><strong>模板消息ID</strong>：创建模板后获得</li>
+                <li><strong>用户OpenID</strong>：关注测试号后在用户列表查看，可添加多个</li>
+            </ul>
+
+            <h3>步骤 2：API密钥</h3>
+            <ul>
+                <li><strong>和风天气Key</strong>：从和风天气开发者平台获�?/li>
+                <li><strong>天行数据Key</strong>：从天行数据平台获取</li>
+            </ul>
+
+            <h3>步骤 3：个人信�?/h3>
+            <ul>
+                <li><strong>地区</strong>：填写城市名称，�?北京"�?上海"</li>
+                <li><strong>星座</strong>：选择对应的星�?/li>
+                <li><strong>生日</strong>：可添加多个，支持公历和农历</li>
+                <li><strong>纪念�?/strong>：记录重要日期，显示累计天数</li>
+                <li><strong>倒计�?/strong>：未来日期，显示剩余天数</li>
+            </ul>
+
+            <div class="tip">
+                <strong>💡 农历生日�?/strong> 勾�?农历"选项，系统会自动处理农历日期转换�?
+            </div>
+
+            <h3>步骤 4：推送内�?/h3>
+            <p>选择你想要推送的内容类型�?/p>
+            <ul>
+                <li>🌅 早安心语 - 每日励志语录</li>
+                <li>🌙 晚安心语 - 温馨晚安话语</li>
+                <li>💝 土味情话 - 甜蜜情话</li>
+                <li>🌈 彩虹�?- 夸赞文案</li>
+                <li>🏥 健康小提�?- 健康养生知识</li>
+                <li>💡 生活小窍�?- 实用技�?/li>
+                <li>😂 雷人笑话 - 搞笑段子</li>
+                <li>🧩 谜语大全 - 趣味谜语</li>
+                <li>📖 故事大全 - 精选故�?/li>
+                <li>以及更多...</li>
+            </ul>
+
+            <h3>步骤 5：生成配�?/h3>
+            <p>完成所有配置后�?/p>
+            <ol>
+                <li>点击"下一�?进入最后一�?/li>
+                <li>检查生成的配置文件</li>
+                <li>点击"复制"�?下载"按钮</li>
+                <li>保存�?<code>config.txt</code></li>
+            </ol>
+        </div>
+
+        <!-- 部署使用 -->
+        <div class="section">
+            <h2>🚀 部署和使�?/h2>
+
+            <h3>方式一：GitHub Actions（推荐）</h3>
+            <ol>
+                <li>Fork 项目仓库</li>
+                <li>�?<code>config.txt</code> 上传�?<code>WeChatPush-Merged/</code> 目录</li>
+                <li>GitHub Actions 会自动定时推�?/li>
+            </ol>
+
+            <h3>方式二：服务器部�?/h3>
+            <div class="code-block">
+                <code>bash &lt;(curl -fsSL https://raw.githubusercontent.com/你的用户�?wexchatpush/main/install.sh)</code>
+            </div>
+
+            <h3>方式三：本地运行</h3>
+            <div class="code-block">
+                <code>pip install -r requirements.txt<br>
+python main.py</code>
+            </div>
+        </div>
+
+        <!-- 常见问题 -->
+        <div class="section">
+            <h2>�?常见问题</h2>
+
+            <h3>Q: 如何添加多个接收用户�?/h3>
+            <p>�?接收用户OpenID"步骤，点�?+"按钮添加更多用户�?/p>
+
+            <h3>Q: 农历生日如何配置�?/h3>
+            <p>在添加生日时，勾�?农历"选项即可。系统会在日期前自动添加 'r' 标识�?/p>
+
+            <h3>Q: 推送失败怎么办？</h3>
+            <p>检查以下几点：</p>
+            <ul>
+                <li>AppID �?AppSecret 是否正确</li>
+                <li>模板ID 是否正确</li>
+                <li>用户是否已关注测试号</li>
+                <li>API Key 是否有效</li>
+            </ul>
+
+            <h3>Q: 如何修改推送时间？</h3>
+            <p>GitHub Actions 默认推送时间在工作流配置中设置。可以编�?<code>.github/workflows/push.yml</code> 修改 cron 表达式�?/p>
+
+            <h3>Q: 配置文件丢失了怎么办？</h3>
+            <p>重新访问配置工具，填写信息后再次生成即可�?/p>
+        </div>
+
+        <!-- 模板变量 -->
+        <div class="section">
+            <h2>📝 模板变量参�?/h2>
+
+            <h3>基础变量</h3>
+            <ul>
+                <li><code>{{date.DATA}}</code> - 日期</li>
+                <li><code>{{region.DATA}}</code> - 地区</li>
+                <li><code>{{weather.DATA}}</code> - 天气</li>
+                <li><code>{{temp.DATA}}</code> - 当前温度</li>
+                <li><code>{{max_temp.DATA}}</code> - 最高温�?/li>
+                <li><code>{{min_temp.DATA}}</code> - 最低温�?/li>
+                <li><code>{{wind_dir.DATA}}</code> - 风向</li>
+                <li><code>{{sunrise.DATA}}</code> - 日出时间</li>
+                <li><code>{{sunset.DATA}}</code> - 日落时间</li>
+            </ul>
+
+            <h3>内容变量</h3>
+            <ul>
+                <li><code>{{zaoan.DATA}}</code> - 早安心语</li>
+                <li><code>{{wanan.DATA}}</code> - 晚安心语</li>
+                <li><code>{{saylove.DATA}}</code> - 土味情话</li>
+                <li><code>{{chp.DATA}}</code> - 彩虹�?/li>
+                <li><code>{{health_tip.DATA}}</code> - 健康小提�?/li>
+                <li><code>{{joke.DATA}}</code> - 笑话</li>
+                <li><code>{{story.DATA}}</code> - 故事</li>
+                <li>更多变量请参考文�?..</li>
+            </ul>
+
+            <h3>个人变量</h3>
+            <ul>
+                <li><code>{{birthday1.DATA}}</code> - 生日1倒计�?/li>
+                <li><code>{{commemoration_day1.DATA}}</code> - 纪念�?累计天数</li>
+                <li><code>{{countdown1.DATA}}</code> - 倒计�?剩余天数</li>
+                <li><code>{{horoscope1.DATA}}</code> - 星座运势</li>
+            </ul>
+        </div>
+
+        <!-- 获取帮助 -->
+        <div class="section">
+            <h2>💬 获取帮助</h2>
+            <p>如果遇到问题�?/p>
+            <ul>
+                <li>查看 <a href="https://github.com/你的用户�?wexchatpush" target="_blank" style="color: #667eea;">GitHub
+                        仓库</a> 的完整文�?/li>
+                <li>提交 <a href="https://github.com/你的用户�?wexchatpush/issues" target="_blank"
+                        style="color: #667eea;">Issue</a> 反馈问题</li>
+                <li>�?Discussions 中交流讨�?/li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: rgba(255, 255, 255, 0.5);">
+            <p>Made with ❤️ for WeChat Push</p>
+        </div>
+    </div>
+</body>
+
+</html>

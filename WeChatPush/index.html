@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信公众号推送配置工�?/title>
+    <meta name="description" content="一键生成微信公众号消息推送配置，支持天气、生日、纪念日等多种内容推�?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- 动态背�?-->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- 主容�?-->
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <h1>微信公众号推送配�?/h1>
+            </div>
+            <p class="subtitle">一键生成配置文件，轻松实现每日消息自动推�?/p>
+            <div style="margin-top: 20px;">
+                <a href="help.html" class="btn-help"
+                    style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; text-decoration: none; font-size: 0.9rem; transition: all 0.3s;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="width: 18px; height: 18px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    使用说明
+                </a>
+            </div>
+        </header>
+
+        <!-- 进度指示�?-->
+        <div class="progress-bar">
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-dot">1</div>
+                    <span>公众号配�?/span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-dot">2</div>
+                    <span>API密钥</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-dot">3</div>
+                    <span>个人信息</span>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-dot">4</div>
+                    <span>推送内�?/span>
+                </div>
+                <div class="step" data-step="5">
+                    <div class="step-dot">5</div>
+                    <span>生成配置</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表单区域 -->
+        <main class="main-content">
+            <form id="configForm">
+                <!-- 步骤1: 公众号配�?-->
+                <section class="form-section active" data-section="1">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>公众号配�?/h2>
+                            <p>填写微信公众号测试账号信�?/p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="appId">
+                                <span class="label-text">AppID</span>
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="appId" name="appId" placeholder="wx1234567890abcdef" required>
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path
+                                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="hint">在微信公众平台测试号管理页面获取</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appSecret">
+                                <span class="label-text">AppSecret</span>
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="password" id="appSecret" name="appSecret" placeholder="•••••••••••••••�?
+                                    required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('appSecret')">
+                                    <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" style="display:none">
+                                        <path
+                                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                        </path>
+                                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="hint">请妥善保管，不要泄露给他�?/span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="templateId">
+                                <span class="label-text">模板消息ID</span>
+                                <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="templateId" name="templateId"
+                                    placeholder="HMfWL2FigSkkOi5kb7ezcarWfpjZfBmQV6A5l2BGCpA" required>
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="hint">在测试号管理 �?模板消息接口 中创建并获取</span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="users">
+                                <span class="label-text">接收用户 OpenID</span>
+                                <span class="required">*</span>
+                            </label>
+                            <div class="users-container" id="usersContainer">
+                                <div class="user-input-row">
+                                    <div class="input-wrapper">
+                                        <input type="text" name="user[]" placeholder="opuja6Yqv2TlOUpQewIUj8EsDNBY"
+                                            required>
+                                        <div class="input-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn-icon btn-add" onclick="addUser()">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="hint">扫码关注测试号后，在用户列表中获取OpenID</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 步骤2: API密钥 -->
+                <section class="form-section" data-section="2">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>API密钥配置</h2>
+                            <p>配置第三方数据接口密�?/p>
+                        </div>
+                    </div>
+
+                    <div class="api-cards">
+                        <div class="api-card">
+                            <div class="api-card-header">
+                                <div class="api-logo weather-logo">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="5"></circle>
+                                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3>和风天气</h3>
+                                    <p>提供天气、空气质量等数据</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="weatherKey">API Key</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="weatherKey" name="weatherKey"
+                                        placeholder="f88da1e87643430ea88b7d50a5e2f289">
+                                </div>
+                            </div>
+                            <a href="https://dev.qweather.com/" target="_blank" class="api-link">
+                                <span>前往注册</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="api-card">
+                            <div class="api-card-header">
+                                <div class="api-logo tianapi-logo">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                        <polyline points="2 17 12 22 22 17"></polyline>
+                                        <polyline points="2 12 12 17 22 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3>天行数据</h3>
+                                    <p>提供早安心语、笑话等内容</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tianApi">API Key</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="tianApi" name="tianApi"
+                                        placeholder="8acb02643366406953a2db1b48d13059">
+                                </div>
+                            </div>
+                            <a href="https://www.tianapi.com/" target="_blank" class="api-link">
+                                <span>前往注册</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 步骤3: 个人信息 -->
+                <section class="form-section" data-section="3">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>个人信息设置</h2>
+                            <p>配置地区、生日、纪念日等个人信�?/p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="region">
+                                <span class="label-text">所在地�?/span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" id="region" name="region" placeholder="北京" value="北京">
+                                <div class="input-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span class="hint">支持城市、区县名�?/span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="horoscope">
+                                <span class="label-text">星座</span>
+                            </label>
+                            <div class="select-wrapper">
+                                <select id="horoscope" name="horoscope">
+                                    <option value="">请选择星座</option>
+                                    <option value="aries">�?白羊�?/option>
+                                    <option value="taurus">�?金牛�?/option>
+                                    <option value="gemini">�?双子�?/option>
+                                    <option value="cancer">�?巨蟹�?/option>
+                                    <option value="leo">�?狮子�?/option>
+                                    <option value="virgo">�?处女�?/option>
+                                    <option value="libra">�?天秤�?/option>
+                                    <option value="scorpio">�?天蝎�?/option>
+                                    <option value="sagittarius">�?射手�?/option>
+                                    <option value="capricorn">�?摩羯�?/option>
+                                    <option value="aquarius">�?水瓶�?/option>
+                                    <option value="pisces">�?双鱼�?/option>
+                                </select>
+                                <div class="select-arrow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 生日设置 -->
+                    <div class="info-block">
+                        <div class="block-header">
+                            <div class="block-icon birthday-icon">🎂</div>
+                            <h3>生日提醒</h3>
+                            <button type="button" class="btn-add-item" onclick="addBirthday()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                添加
+                            </button>
+                        </div>
+                        <div class="items-container" id="birthdayContainer">
+                            <div class="item-row">
+                                <input type="text" name="birthdayName[]" placeholder="名字" class="name-input">
+                                <input type="date" name="birthdayDate[]" class="date-input">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="birthdayLunar[]">
+                                    <span class="checkbox-custom"></span>
+                                    农历
+                                </label>
+                                <button type="button" class="btn-remove" onclick="removeItem(this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 纪念日设�?-->
+                    <div class="info-block">
+                        <div class="block-header">
+                            <div class="block-icon anniversary-icon">💕</div>
+                            <h3>纪念�?/h3>
+                            <button type="button" class="btn-add-item" onclick="addAnniversary()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                添加
+                            </button>
+                        </div>
+                        <div class="items-container" id="anniversaryContainer">
+                            <div class="item-row">
+                                <input type="date" name="anniversaryDate[]" class="date-input full">
+                                <button type="button" class="btn-remove" onclick="removeItem(this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 倒计时设�?-->
+                    <div class="info-block">
+                        <div class="block-header">
+                            <div class="block-icon countdown-icon">�?/div>
+                            <h3>倒计�?/h3>
+                            <button type="button" class="btn-add-item" onclick="addCountdown()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                添加
+                            </button>
+                        </div>
+                        <div class="items-container" id="countdownContainer">
+                            <div class="item-row">
+                                <input type="date" name="countdownDate[]" class="date-input full">
+                                <button type="button" class="btn-remove" onclick="removeItem(this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 步骤4: 推送内�?-->
+                <section class="form-section" data-section="4">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>推送内容选择</h2>
+                            <p>选择您想要推送的内容类型</p>
+                        </div>
+                    </div>
+
+                    <div class="content-grid">
+                        <label class="content-card selected">
+                            <input type="checkbox" name="contents[]" value="zaoan" checked>
+                            <div class="card-inner">
+                                <div class="card-emoji">🌅</div>
+                                <div class="card-info">
+                                    <h4>早安心语</h4>
+                                    <p>每日励志早安语录</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card selected">
+                            <input type="checkbox" name="contents[]" value="wanan" checked>
+                            <div class="card-inner">
+                                <div class="card-emoji">🌙</div>
+                                <div class="card-info">
+                                    <h4>晚安心语</h4>
+                                    <p>温馨晚安祝福�?/p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="saylove">
+                            <div class="card-inner">
+                                <div class="card-emoji">💝</div>
+                                <div class="card-info">
+                                    <h4>土味情话</h4>
+                                    <p>甜蜜土味情话</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="caihongpi">
+                            <div class="card-inner">
+                                <div class="card-emoji">🌈</div>
+                                <div class="card-info">
+                                    <h4>彩虹�?/h4>
+                                    <p>夸赞文案大全</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="healthtip">
+                            <div class="card-inner">
+                                <div class="card-emoji">🏥</div>
+                                <div class="card-info">
+                                    <h4>健康小提�?/h4>
+                                    <p>健康养生知识</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="qiaomen">
+                            <div class="card-inner">
+                                <div class="card-emoji">💡</div>
+                                <div class="card-info">
+                                    <h4>生活小窍�?/h4>
+                                    <p>实用生活技�?/p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="joke">
+                            <div class="card-inner">
+                                <div class="card-emoji">😂</div>
+                                <div class="card-info">
+                                    <h4>雷人笑话</h4>
+                                    <p>搞笑笑话段子</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="riddle">
+                            <div class="card-inner">
+                                <div class="card-emoji">🧩</div>
+                                <div class="card-info">
+                                    <h4>谜语大全</h4>
+                                    <p>趣味谜语问答</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="story">
+                            <div class="card-inner">
+                                <div class="card-emoji">📖</div>
+                                <div class="card-info">
+                                    <h4>故事大全</h4>
+                                    <p>每日精选故�?/p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="dujitang">
+                            <div class="card-inner">
+                                <div class="card-emoji">🍵</div>
+                                <div class="card-info">
+                                    <h4>毒鸡�?/h4>
+                                    <p>反励志语�?/p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="tiangou">
+                            <div class="card-inner">
+                                <div class="card-emoji">🐕</div>
+                                <div class="card-info">
+                                    <h4>舔狗日记</h4>
+                                    <p>舔狗语录大全</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="content-card">
+                            <input type="checkbox" name="contents[]" value="proverb">
+                            <div class="card-inner">
+                                <div class="card-emoji">📜</div>
+                                <div class="card-info">
+                                    <h4>文化谚语</h4>
+                                    <p>传统文化谚语</p>
+                                </div>
+                                <div class="card-check">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- 步骤5: 生成配置 -->
+                <section class="form-section" data-section="5">
+                    <div class="section-header">
+                        <div class="section-icon success-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>生成配置文件</h2>
+                            <p>检查配置并生成文件</p>
+                        </div>
+                    </div>
+
+                    <div class="output-container">
+                        <div class="output-header">
+                            <h3>config.txt</h3>
+                            <div class="output-actions">
+                                <button type="button" class="btn-copy" onclick="copyConfig()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    复制
+                                </button>
+                                <button type="button" class="btn-download" onclick="downloadConfig()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    下载
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="output-code" id="outputCode"></pre>
+                    </div>
+
+                    <div class="tips-container">
+                        <div class="tip-card">
+                            <div class="tip-icon">📋</div>
+                            <div class="tip-content">
+                                <h4>下一步操�?/h4>
+                                <ol>
+                                    <li>将生成的配置保存�?<code>config.txt</code></li>
+                                    <li>Fork GitHub 仓库到你的账�?/li>
+                                    <li>替换仓库中的 config.txt 文件</li>
+                                    <li>GitHub Actions 会自动定时推送消�?/li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 导航按钮 -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="prevStep()"
+                        style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        上一�?
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()">
+                        下一�?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>Made with ❤️ for WeChat Push</p>
+        </footer>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        <span class="toast-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
